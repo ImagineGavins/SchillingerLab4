@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schillinger Assignment 3</title>
+    <script>
+        function tableCreate(value) 
+        {
+            const body = document.body,
+            tbl = document.createElement('table');
+            tbl.style.width = value * 100;
+            tbl.style.border = '1px solid black';
+  
+            for (let i = 0; i < value; i++) 
+            {
+                const tr = tbl.insertRow();
+                for (let j = 0; j < value; j++) 
+                {
+                    if (i === value && j === value) 
+                    {
+                        break;
+                    } 
+                    else 
+                    {
+                        var color = ((1<<24)*Math.random()|0).toString(16)
+                        const td = tr.insertCell();
+                        td.style.backgroundColor = "#" + color
+                        td.appendChild(document.createTextNode(color))
+                        td.style.color = "black"
+                        td.style.border = '1px solid black';
+                        td.style.width = '100px'
+                        td.style.height = '100px'
+                    }
+                }
+            }
+            body.appendChild(tbl);
+        }
+    </script>
+</head>
+<body>
+    <select name="sizes" id="sizes" onchange="tableCreate(this.value);">
+        <option value="3">3x3</option>
+        <option value="4">4x4</option>
+        <option value="5">5x5</option>
+        <option value="10">10x10</option>
+        <option value="20">20x20</option>
+    </select>
+</body>
+</html>
